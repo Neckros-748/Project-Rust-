@@ -15,10 +15,10 @@ pub struct PlayingField {
 	pub height: usize,
 	pub field:  Vec<Vec<Cell>>,
 
-	pub open:   usize,
+	// pub open:   usize,
 	pub flag:   usize,
 
-	pub volume: usize,
+	// pub volume: usize,
 	pub mines:  usize,
 }
 
@@ -39,14 +39,13 @@ impl PlayingField {
 				];
 				width
 			],
-			open:   0,
+			// open:   0,
 			flag:   0,
-			volume: 0,
+			// volume: 0,
 			mines:  0,
 		};
 
-		field.volume = field.generation();
-		field.mines  = (0.15 * field.volume as f32) as usize;
+		field.mines  = (0.15 * field.generation() as f32) as usize;
 
 		field.set_mines();
 		field.set_numbers();
@@ -58,7 +57,7 @@ impl PlayingField {
 			return CellType::Null;
 		}
 		self.field[x][y].f_open = true;
-		self.open += 1;
+		// self.open += 1;
 
 		if let CellType::Number(0) = self.field[x][y].p_type {
 			for dx in -1..=1 {

@@ -45,7 +45,12 @@ impl Game {
 
 			let p_type = self.field.open(x, y);
 
-			if self.field.open + self.field.mines == self.field.volume {
+			if self.field.field.iter().flatten().all(|cell| {
+				match cell.p_type {
+					CellType::Number(_) => cell.f_open,
+					_ => true,
+				}
+			}) {
 				self.f_game = 1;
 			}
 			if let CellType::Mine = p_type {
